@@ -1,3 +1,5 @@
+package it.unipd.mtss;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -10,6 +12,10 @@ public class IntegerToRoman {
         assertEquals("IV", IntegerToRoman.convert(4));
         assertEquals("IX", IntegerToRoman.convert(9));
         assertEquals("X", IntegerToRoman.convert(10));
+        assertEquals("XL", IntegerToRoman.convert(40));
+        assertEquals("L", IntegerToRoman.convert(50));
+        assertEquals("XC", IntegerToRoman.convert(90));
+        assertEquals("C", IntegerToRoman.convert(100));
 
     }
 
@@ -17,7 +23,7 @@ public class IntegerToRoman {
     public void testCompositeValues() {
 
         assertEquals("III", IntegerToRoman.convert(3));
-        assertEquals("VIII", IntegerToRoman.convert(8));
+        assertEquals("LVIII", IntegerToRoman.convert(58));
 
     }
 
@@ -33,9 +39,9 @@ public class IntegerToRoman {
 
         try {
             IntegerToRoman.convert(11);
-            fail("Si aspetta un IllegalArgumentException per l'input 11");
+            fail("Si aspetta un IllegalArgumentException per l'input 101");
         } catch (IllegalArgumentException e) {
-            assertEquals("l'input dev'essere compreso tra 1 e 10", e.getMessage());
+            assertEquals("l'input dev'essere compreso tra 1 e 100", e.getMessage());
         }
 
     }
