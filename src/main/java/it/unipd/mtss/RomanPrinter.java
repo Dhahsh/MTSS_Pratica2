@@ -33,6 +33,24 @@ public class RomanPrinter {
         " / . \\ ",
         "/_/ \\_\\"
     };
+    
+    private static final String[] L_ART = {
+        " _      ",
+        "| |     ",
+        "| |     ",
+        "| |     ",
+        "| |____ ",
+        "|______|"
+    };
+    
+    private static final String[] C_ART = {
+        "  _____ ",
+        " / ____|",
+        "| |     ",
+        "| |     ",
+        "| |____ ",
+        " \\_____|"
+    };
 
     public static String print(int num) {
         return printAsciiArt(IntegerToRoman.convert(num));
@@ -58,6 +76,11 @@ public class RomanPrinter {
                     case 'X':
                         result.append(X_ART[i]);
                         break;
+                    case 'L':
+                        result.append(L_ART[i]);
+                        break;
+                    case 'C':
+                        result.append(C_ART[i]);
                     default:
                         continue;
                 }
