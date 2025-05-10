@@ -1,9 +1,10 @@
 package it.unipd.mtss;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-public class IntegerToRoman {
+public class IntegerToRomanTest {
 
     @Test
     public void testSimpleValues() {                                    //test su valori semplici
@@ -16,6 +17,8 @@ public class IntegerToRoman {
         assertEquals("L", IntegerToRoman.convert(50));
         assertEquals("XC", IntegerToRoman.convert(90));
         assertEquals("C", IntegerToRoman.convert(100));
+        assertEquals("CD", IntegerToRoman.convert(400));
+        assertEquals("D", IntegerToRoman.convert(100));
 
     }
 
@@ -24,6 +27,8 @@ public class IntegerToRoman {
 
         assertEquals("III", IntegerToRoman.convert(3));
         assertEquals("LVIII", IntegerToRoman.convert(58));
+        assertEquals("CCCLXXXII", IntegerToRoman.convert(382));
+        assertEquals("CDLIX", IntegerToRoman.convert(459));
 
     }
 
@@ -38,8 +43,8 @@ public class IntegerToRoman {
         }
 
         try {
-            IntegerToRoman.convert(11);
-            fail("Si aspetta un IllegalArgumentException per l'input 101");
+            IntegerToRoman.convert(501);
+            fail("Si aspetta un IllegalArgumentException per l'input 501");
         } catch (IllegalArgumentException e) {
             assertEquals("l'input dev'essere compreso tra 1 e 100", e.getMessage());
         }

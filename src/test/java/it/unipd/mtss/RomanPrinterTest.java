@@ -1,7 +1,7 @@
 package it.unipd.mtss;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class RomanPrinterTest {
 
@@ -15,7 +15,7 @@ public class RomanPrinterTest {
                 " _| |_  \n" +
                 "|_____| \n";
 
-        String actual = RomanPrinter.print("I");
+        String actual = RomanPrinter.print(1);
         assertEquals(expected, actual);
     }
 
@@ -29,7 +29,7 @@ public class RomanPrinterTest {
                 " _| |_     \\  /    \n" +
                 "|_____|     \\/     \n";
 
-        String actual = RomanPrinter.print("IV");
+        String actual = RomanPrinter.print(4);
         assertEquals(expected, actual);
     }
 
@@ -43,7 +43,7 @@ public class RomanPrinterTest {
                 "   \\  /    \n" +
                 "    \\/     \n";
 
-        String actual = RomanPrinter.print("V");
+        String actual = RomanPrinter.print(5);
         assertEquals(expected, actual);
     }
 
@@ -57,7 +57,7 @@ public class RomanPrinterTest {
                 " _| |_   / . \\  \n" +
                 "|_____| /_/ \\_\\ \n";
 
-        String actual = RomanPrinter.print("IX");
+        String actual = RomanPrinter.print(9);
         assertEquals(expected, actual);
     }
 
@@ -71,7 +71,7 @@ public class RomanPrinterTest {
                 " / . \\  \n" +
                 "/_/ \\_\\ \n";
 
-        String actual = RomanPrinter.print("X");
+        String actual = RomanPrinter.print(10);
         assertEquals(expected, actual);
     }
 
@@ -85,7 +85,7 @@ public class RomanPrinterTest {
                 " / . \\   / . \\   / . \\   _| |_   / . \\  \n" +
                 "/_/ \\_\\ /_/ \\_\\ /_/ \\_\\ |_____| /_/ \\_\\ \n";
 
-        String actual = RomanPrinter.print("XXXIX");
+        String actual = RomanPrinter.print(39);
         assertEquals(expected, actual);
     }
 
@@ -99,7 +99,7 @@ public class RomanPrinterTest {
                 " / . \\  | |____  \n" +
                 "/_/ \\_\\ |______| \n";
 
-        String actual = RomanPrinter.print("XL");
+        String actual = RomanPrinter.print(40);
         assertEquals(expected, actual);
     }
 
@@ -113,7 +113,7 @@ public class RomanPrinterTest {
                 " / . \\  | |____   _| |_   / . \\  \n" +
                 "/_/ \\_\\ |______| |_____| /_/ \\_\\ \n";
 
-        String actual = RomanPrinter.print("XLIX");
+        String actual = RomanPrinter.print(49);
         assertEquals(expected, actual);
     }
 
@@ -127,7 +127,7 @@ public class RomanPrinterTest {
                 "| |____  \n" +
                 "|______| \n";
 
-        String actual = RomanPrinter.print("L");
+        String actual = RomanPrinter.print(50);
         assertEquals(expected, actual);
     }
 
@@ -141,7 +141,7 @@ public class RomanPrinterTest {
                 " / . \\  | |____  \n" +
                 "/_/ \\_\\  \\_____| \n";
 
-        String actual = RomanPrinter.print("XC");
+        String actual = RomanPrinter.print(90);
         assertEquals(expected, actual);
     }
 
@@ -155,7 +155,7 @@ public class RomanPrinterTest {
                 " / . \\  | |____   _| |_   / . \\  \n" +
                 "/_/ \\_\\  \\_____| |_____| /_/ \\_\\ \n";
                                  
-        String actual = RomanPrinter.print("XCIX");
+        String actual = RomanPrinter.print(99);
         assertEquals(expected, actual);
     }
 
@@ -169,13 +169,55 @@ public class RomanPrinterTest {
                 "| |____  \n" +
                 " \\_____| \n";
                                  
-        String actual = RomanPrinter.print("C");
+        String actual = RomanPrinter.print(100);
+        assertEquals(expected, actual);
+    }
+    
+    @Test                                               //Test per 400
+    public void testAsciiArtCD() {
+        String expected = 
+                "  _____   _____   \n" +
+                " / ____| |  __ \\  \n" +
+                "| |      | |  | | \n" +
+                "| |      | |  | | \n" +
+                "| |____  | |__| | \n" +
+                " \\_____| |_____/ \n";
+                                 
+        String actual = RomanPrinter.print(400);
+        assertEquals(expected, actual);
+    }
+    
+    @Test                                               //Test per 449
+    public void testAsciiArtCDXLIX() {
+        String expected = 
+                "  _____   _____   __   __  _        _____  __   __ \n" +
+                " / ____| |  __ \\  \\ \\ / / | |      |_   _| \\ \\ / / \n" +
+                "| |      | |  | |  \\ V /  | |        | |    \\ V /  \n" +
+                "| |      | |  | |   > <   | |        | |     > <   \n" +
+                "| |____  | |__| |  / . \\  | |____   _| |_   / . \\  \n" +
+                " \\_____| |_____/  /_/ \\_\\ |______| |_____| /_/ \\_\\ \n";
+                                 
+        String actual = RomanPrinter.print(449);
+        assertEquals(expected, actual);
+    }
+    
+    @Test                                               //Test per 500
+    public void testAsciiArtD() {
+        String expected = 
+                " _____   \n" +
+                "|  __ \\  \n" +
+                "| |  | | \n" +
+                "| |  | | \n" +
+                "| |__| | \n" +
+                "|_____/  \n";
+                                 
+        String actual = RomanPrinter.print(500);
         assertEquals(expected, actual);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidRomanInput() {
-        RomanPrinter.print("XYZ"); // Input non valido
+        RomanPrinter.print(501); // Input non valido
     }
 }
 /*
