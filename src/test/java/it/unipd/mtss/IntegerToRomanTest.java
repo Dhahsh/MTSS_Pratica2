@@ -43,14 +43,14 @@ public class IntegerToRomanTest {
             IntegerToRoman.convert(0);
             fail("Si aspetta un IllegalArgumentException per l'input 0");
         } catch (IllegalArgumentException e) {
-            assertEquals("Zero non e' un input valido", e.getMessage());
+            assertEquals("Il numero deve essere compreso tra 1 e 1000", e.getMessage());
         }
 
         try {
             IntegerToRoman.convert(1001);
             fail("Si aspetta un IllegalArgumentException per l'input 1001");
         } catch (IllegalArgumentException e) {
-            assertEquals("l'input dev'essere compreso tra 1 e 1001", e.getMessage());
+            assertEquals("Il numero deve essere compreso tra 1 e 1000", e.getMessage());
         }
 
     }

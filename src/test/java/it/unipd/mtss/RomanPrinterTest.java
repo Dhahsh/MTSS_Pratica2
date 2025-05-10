@@ -181,7 +181,7 @@ public class RomanPrinterTest {
                 "| |      | |  | | \n" +
                 "| |      | |  | | \n" +
                 "| |____  | |__| | \n" +
-                " \\_____| |_____/ \n";
+                " \\_____| |_____/  \n";
                                  
         String actual = RomanPrinter.print(400);
         assertEquals(expected, actual);
