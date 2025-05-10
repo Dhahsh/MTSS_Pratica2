@@ -214,10 +214,52 @@ public class RomanPrinterTest {
         String actual = RomanPrinter.print(500);
         assertEquals(expected, actual);
     }
+    
+    @Test                                               //Test per 893
+    public void testAsciiArtDCCCXCIII() {
+        String expected = 
+                " _____     _____    _____    _____  __   __   _____   _____   _____   _____  \n" +
+                "|  __ \\   / ____|  / ____|  / ____| \\ \\ / /  / ____| |_   _| |_   _| |_   _| \n" +
+                "| |  | | | |      | |      | |       \\ V /  | |        | |     | |     | |   \n" +
+                "| |  | | | |      | |      | |        > <   | |        | |     | |     | |   \n" +
+                "| |__| | | |____  | |____  | |____   / . \\  | |____   _| |_   _| |_   _| |_  \n" +
+                "|_____/   \\_____|  \\_____|  \\_____| /_/ \\_\\  \\_____| |_____| |_____| |_____| \n";
+                                 
+        String actual = RomanPrinter.print(893);
+        assertEquals(expected, actual);
+    }
+    
+    @Test                                               //Test per 900
+    public void testAsciiArtCM() {
+        String expected = 
+                "  _____   __  __  \n" +
+                " / ____| |  \\/  | \n" +
+                "| |      | \\  / | \n" +
+                "| |      | |\\/| | \n" +
+                "| |____  | |  | | \n" +
+                " \\_____| |_|  |_| \n";
+                                 
+        String actual = RomanPrinter.print(900);
+        assertEquals(expected, actual);
+    }
+    
+    @Test                                               //Test per 1000
+    public void testAsciiArtM() {
+        String expected = 
+                " __  __  \n" +
+                "|  \\/  | \n" +
+                "| \\  / | \n" +
+                "| |\\/| | \n" +
+                "| |  | | \n" +
+                "|_|  |_| \n";
+                                 
+        String actual = RomanPrinter.print(1000);
+        assertEquals(expected, actual);
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidRomanInput() {
-        RomanPrinter.print(501); // Input non valido
+        RomanPrinter.print(1001); // Input non valido
     }
 }
 /*

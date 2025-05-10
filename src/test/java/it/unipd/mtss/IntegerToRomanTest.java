@@ -18,7 +18,9 @@ public class IntegerToRomanTest {
         assertEquals("XC", IntegerToRoman.convert(90));
         assertEquals("C", IntegerToRoman.convert(100));
         assertEquals("CD", IntegerToRoman.convert(400));
-        assertEquals("D", IntegerToRoman.convert(100));
+        assertEquals("D", IntegerToRoman.convert(500));
+        assertEquals("CM", IntegerToRoman.convert(900));
+        assertEquals("M", IntegerToRoman.convert(1000));
 
     }
 
@@ -29,6 +31,8 @@ public class IntegerToRomanTest {
         assertEquals("LVIII", IntegerToRoman.convert(58));
         assertEquals("CCCLXXXII", IntegerToRoman.convert(382));
         assertEquals("CDLIX", IntegerToRoman.convert(459));
+        assertEquals("DCCLXXXII", IntegerToRoman.convert(782));
+        assertEquals("CMXCIX", IntegerToRoman.convert(999));
 
     }
 
@@ -43,10 +47,10 @@ public class IntegerToRomanTest {
         }
 
         try {
-            IntegerToRoman.convert(501);
-            fail("Si aspetta un IllegalArgumentException per l'input 501");
+            IntegerToRoman.convert(1001);
+            fail("Si aspetta un IllegalArgumentException per l'input 1001");
         } catch (IllegalArgumentException e) {
-            assertEquals("l'input dev'essere compreso tra 1 e 100", e.getMessage());
+            assertEquals("l'input dev'essere compreso tra 1 e 1001", e.getMessage());
         }
 
     }
