@@ -52,6 +52,15 @@ public class RomanPrinter {
         " \\_____|"
     };
 
+    private static final String[] D_ART = {
+        " _____  ",
+        "|  __ \\ ",
+        "| |  | |",
+        "| |  | |",
+        "| |__| |",
+        "|_____/ "
+    };
+
     public static String print(int num) {
         return printAsciiArt(IntegerToRoman.convert(num));
     }
@@ -81,6 +90,9 @@ public class RomanPrinter {
                         break;
                     case 'C':
                         result.append(C_ART[i]);
+                    case 'D':
+                        result.append(D_ART[i]);
+                        break;
                     default:
                         continue;
                 }
@@ -92,9 +104,6 @@ public class RomanPrinter {
         return result.toString();
     }
 }
-
-
-
 
 /*
   _____  __      __ __   __  _         _____   _____    __  __ 
