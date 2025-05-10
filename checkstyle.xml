@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+"http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+	<module name="TreeWalker">
+   	<module name="BooleanExpressionComplexity"/>
+		<module name="CyclomaticComplexity"/>
+		<module name="MethodLength"/>			<!--limita i metodi a 30 righe-->
+		<module name="EmptyCatchBlock"/>	
+		<module name="AvoidStarImport"/>
+		<module name="IllegalImport"/>
+		<module name="NeedBraces"/>			<!--obbliga le graffe-->
+  </module>
+	<module name="FileLength"/>
+	<module name="LineLength"/>
+	<module name="FileTabCharacter"/>
+	<module name="RegexpHeader">				<!--controlla che il contenuto in LICENSE.txt sia all'inizio dei file di main-->
+		<property name="headerFile" value="LICENSE.txt"/>
+	</module>
+</module>
