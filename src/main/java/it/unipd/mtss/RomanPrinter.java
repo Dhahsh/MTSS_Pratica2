@@ -5,6 +5,9 @@
 
 package it.unipd.mtss;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RomanPrinter {
     // rappresentazione in asciiart di ogni carattere in numero romano
     private static final String[] I_ART = {
@@ -33,6 +36,53 @@ public class RomanPrinter {
         " / . \\ ",
         "/_/ \\_\\"
     };
+    
+    private static final String[] L_ART = {
+        " _      ",
+        "| |     ",
+        "| |     ",
+        "| |     ",
+        "| |____ ",
+        "|______|"
+    };
+    
+    private static final String[] C_ART = {
+        "  _____ ",
+        " / ____|",
+        "| |     ",
+        "| |     ",
+        "| |____ ",
+        " \\_____|"
+    };
+
+    private static final String[] D_ART = {
+        " _____  ",
+        "|  __ \\ ",
+        "| |  | |",
+        "| |  | |",
+        "| |__| |",
+        "|_____/ "
+    };
+
+    private static final String[] M_ART = {
+        " __  __ ",
+        "|  \\/  |",
+        "| \\  / |",
+        "| |\\/| |",
+        "| |  | |",
+        "|_|  |_|"
+    };
+
+    private static final Map<Character, String[]> mapAsciiArt=new HashMap<>();
+    static{
+        mapAsciiArt.put('I', I_ART);
+        mapAsciiArt.put('V', V_ART);
+        mapAsciiArt.put('X', X_ART);
+        mapAsciiArt.put('L', L_ART);
+        mapAsciiArt.put('C', C_ART);
+        mapAsciiArt.put('D', D_ART);
+        mapAsciiArt.put('M', M_ART);
+    }
 
     public static String print(int num) {
         return printAsciiArt(IntegerToRoman.convert(num));
@@ -45,23 +95,12 @@ public class RomanPrinter {
 
         StringBuilder result = new StringBuilder();
         int artHeight = 6; // l'altezza di ogni asciiart
-        
-        for (int i = 0; i < artHeight; i++) {           // per ogni riga dei caratteri
-            for (char c : romanNumber.toCharArray()) {  // per ogni carattere del numero
-                switch (c) {
-                    case 'I':
-                        result.append(I_ART[i]);
-                        break;
-                    case 'V':
-                        result.append(V_ART[i]);
-                        break;
-                    case 'X':
-                        result.append(X_ART[i]);
-                        break;
-                    default:
-                        continue;
-                }
-                result.append("  "); // Aggiungo uno spazio tra i caratteri
+
+        // per ogni riga dei caratteri
+        for (int i = 0; i < artHeight; i++) {
+            // per ogni carattere del numero
+            for (char c : romanNumber.toCharArray()) {
+                result.append(mapAsciiArt.get(c)[i]).append(" ");
             }
             result.append("\n"); // nuova riga
         }
@@ -69,9 +108,6 @@ public class RomanPrinter {
         return result.toString();
     }
 }
-
-
-
 
 /*
   _____  __      __ __   __  _         _____   _____    __  __ 

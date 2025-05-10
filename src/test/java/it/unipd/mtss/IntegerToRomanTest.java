@@ -1,7 +1,10 @@
-import org.junit.Test;
-import static org.junit.Assert.*;
+package it.unipd.mtss;
 
-public class IntegerToRoman {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import org.junit.Test;
+
+public class IntegerToRomanTest {
 
     @Test
     public void testSimpleValues() {                                    //test su valori semplici
@@ -10,6 +13,14 @@ public class IntegerToRoman {
         assertEquals("IV", IntegerToRoman.convert(4));
         assertEquals("IX", IntegerToRoman.convert(9));
         assertEquals("X", IntegerToRoman.convert(10));
+        assertEquals("XL", IntegerToRoman.convert(40));
+        assertEquals("L", IntegerToRoman.convert(50));
+        assertEquals("XC", IntegerToRoman.convert(90));
+        assertEquals("C", IntegerToRoman.convert(100));
+        assertEquals("CD", IntegerToRoman.convert(400));
+        assertEquals("D", IntegerToRoman.convert(500));
+        assertEquals("CM", IntegerToRoman.convert(900));
+        assertEquals("M", IntegerToRoman.convert(1000));
 
     }
 
@@ -17,7 +28,11 @@ public class IntegerToRoman {
     public void testCompositeValues() {
 
         assertEquals("III", IntegerToRoman.convert(3));
-        assertEquals("VIII", IntegerToRoman.convert(8));
+        assertEquals("LVIII", IntegerToRoman.convert(58));
+        assertEquals("CCCLXXXII", IntegerToRoman.convert(382));
+        assertEquals("CDLIX", IntegerToRoman.convert(459));
+        assertEquals("DCCLXXXII", IntegerToRoman.convert(782));
+        assertEquals("CMXCIX", IntegerToRoman.convert(999));
 
     }
 
@@ -28,14 +43,14 @@ public class IntegerToRoman {
             IntegerToRoman.convert(0);
             fail("Si aspetta un IllegalArgumentException per l'input 0");
         } catch (IllegalArgumentException e) {
-            assertEquals("Zero non e' un input valido", e.getMessage());
+            assertEquals("Il numero deve essere compreso tra 1 e 1000", e.getMessage());
         }
 
         try {
-            IntegerToRoman.convert(11);
-            fail("Si aspetta un IllegalArgumentException per l'input 11");
+            IntegerToRoman.convert(1001);
+            fail("Si aspetta un IllegalArgumentException per l'input 1001");
         } catch (IllegalArgumentException e) {
-            assertEquals("l'input dev'essere compreso tra 1 e 10", e.getMessage());
+            assertEquals("Il numero deve essere compreso tra 1 e 1000", e.getMessage());
         }
 
     }
